@@ -41,6 +41,9 @@ const Layout: FC<any> = ({children, title, tags, description, imageUrl, url}: La
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Header />
+            <div className="banner">
+
+            </div>
             <main>{children}</main>
             <Footer />
         </div>
