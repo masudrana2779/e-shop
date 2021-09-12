@@ -5,7 +5,7 @@ const ProductWrap = () => {
         <div className='productWrap'>
             <div className="productInner">
                 <div className="productContent">
-                    {[1, 1, 1, 1, 1, 11, 1, 1, , 1].map((item, i) =>
+                    {[1, 1, 1, 1, 1, 11, 1, 1,1, 1, 1, 1, 1, 11, 1, 1 , 1].map((item, i) =>
                         <div className="productSingleItem" key={i}>
                             <div className="productSingleItemInner">
                                 <div className="productImgContent">

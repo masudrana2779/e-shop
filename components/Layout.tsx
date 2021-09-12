@@ -45,7 +45,7 @@ const Layout: FC<any> = ({children, title, tags, description, imageUrl, url}: La
 
             </div>
             <main>{children}</main>
-            <Footer />
+            {/*<Footer />*/}
         </div>
     )
 };
