@@ -1,11 +1,8 @@
 import React, {useState, useCallback} from "react";
 
-type Data = {
-    name: string
-}
 
 export function useLoadMore(count: number) {
-    const [visible, setVisible] = useState(count);
+    const [visible, setVisible] = useState<number>(count);
 
     const loadMoreItems = useCallback(async () => {
         await setVisible((preValue) => preValue + 4)
@@ -16,8 +13,13 @@ export function useLoadMore(count: number) {
     }
 }
 
-// @ts-ignore
-export function LoadMoreButton({loadMoreItems, isShow}) {
+type LoadMoreButtonProps = {
+    loadMoreItems: any,
+    isShow: boolean
+}
+
+
+export function LoadMoreButton({loadMoreItems, isShow}: LoadMoreButtonProps) {
 
     return (
         <>
@@ -27,7 +29,7 @@ export function LoadMoreButton({loadMoreItems, isShow}) {
                         <br/>
                         <br/>
                         <div className="loadMoreVideos text-center">
-                            <button className="btn btn-success loadMOre" onClick={loadMoreItems}>Load More</button>
+                            <button className="btn loadMOre" onClick={loadMoreItems}>Load More</button>
                         </div>
                     </div>
                 </div>

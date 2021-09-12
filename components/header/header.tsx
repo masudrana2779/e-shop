@@ -1,6 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 import {Dropdown} from "react-bootstrap";
+import LoginModal from "../loginModal/loginModal";
 
 const Header = () => {
     return (
@@ -49,7 +50,8 @@ const Header = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <button className="btn btn-success">Join</button>
+                                            {/*<button className="btn btn-success">Join</button>*/}
+                                            <LoginModal />
                                         </li>
                                     </ul>
                                 </div>
