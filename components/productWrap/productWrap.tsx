@@ -1,11 +1,14 @@
 import React from "react";
+import {LoadMoreButton, useLoadMore} from "../../hooks/useLoadMore";
 
 const ProductWrap = () => {
+
+    const {visible, loadMoreItems} = useLoadMore(6);
     return (
         <div className='productWrap'>
             <div className="productInner">
                 <div className="productContent">
-                    {[1, 1, 1, 1, 1, 11, 1, 1,1, 1, 1, 1, 1, 11, 1, 1 , 1].map((item, i) =>
+                    {[1, 1, 1, 1, 1, 11, 1, 1,1, 1, 1, 1, 1, 11, 1, 1 , 1].slice(0, visible).map((item, i) =>
                         <div className="productSingleItem" key={i}>
                             <div className="productSingleItemInner">
                                 <div className="productImgContent">
@@ -45,6 +48,9 @@ const ProductWrap = () => {
                             </div>
                         </div>
                     )}
+                </div>
+                <div className="jkj text-center p-4">
+                    <LoadMoreButton loadMoreItems={loadMoreItems} isShow={[1, 1, 1, 1, 1, 11, 1, 1,1, 1, 1, 1, 1, 11, 1, 1 , 1].length > visible}/>
                 </div>
             </div>
         </div>
