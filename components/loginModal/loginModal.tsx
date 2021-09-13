@@ -1,8 +1,40 @@
 import React, {useState} from "react";
 import {Modal} from "react-bootstrap";
 import Link from 'next/link';
+import {use} from "ast-types";
 
 const LoginModal = () => {
+
+    const adminUser = {
+        email: "demo@demo.com",
+        password: "demo"
+    }
+    const [user, setUser] = useState({email: "", password: ""});
+    const [error, setError] = useState("");
+    const [details, setDetails] = useState({email: "", password: ""});
+
+    const Login = (details: any) => {
+        console.log(details);
+        if ((details.email === adminUser.email) && (details.password === adminUser.password)) {
+            console.log("Logged in");
+            setUser({
+                email: details.email,
+                password: details.password
+            })
+            setShow(false)
+        } else {
+            console.log("Logout")
+        }
+    }
+
+    const Logout = () => {
+        console.log("Logout");
+        setUser({
+            email: "",
+            password: ""
+        })
+    }
+
     const [show, setShow] = useState(false);
     const [showLogin, setShowLogin] = useState(true);
     const [showSignup, setShowSignup] = useState(false);
@@ -12,9 +44,22 @@ const LoginModal = () => {
     const handleShow = () => setShow(true);
 
 
+    const submitHandler = (e: any) => {
+        e.preventDefault();
+        Login(details);
+    }
+
+
     return (
         <>
-            <button className="btn btn-success" onClick={handleShow}>Join</button>
+
+
+            {(user.email != "") ? (
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user" width='38px' height='38px'
+                     onClick={() => Logout()}/>
+            ) : (
+                <button className="btn btn-success" onClick={handleShow}>Join</button>
+            )}
 
             <Modal show={show} onHide={handleClose} animation={true} centered backdropClassName={'modalBg'}
                    dialogClassName={'loginModal'}>
@@ -28,9 +73,13 @@ const LoginModal = () => {
                     <div className="loginFormInner">
                         <h2 className='formTitle text-center'>Welcome Back</h2>
                         <p className='text-center'>Login with your email & password</p>
-                        <form>
-                            <input type="email" className='form-control' placeholder='demo@demo.com'/>
-                            <input type="password" placeholder={'demo'} className='form-control'/>
+                        <form onSubmit={submitHandler}>
+                            <input type="email" className='form-control' placeholder='demo@demo.com' name={'email'}
+                                   onChange={e => setDetails({...details, email: e.target.value})}
+                                   value={details.email}/>
+                            <input type="password" placeholder={'demo'} className='form-control' name={'password'}
+                                   onChange={e => setDetails({...details, password: e.target.value})}
+                                   value={details.password}/>
                             <button className="btn btn-success btnSubmit">Continue</button>
                         </form>
                         <div className="orDivider text-center">
@@ -53,10 +102,12 @@ const LoginModal = () => {
                         </span>
                             Continue with Google
                         </button>
-                        <p className="text-center doNot">Don't have any account? <span onClick={()=> setShowSignup(true)}> Sign Up</span></p>
+                        <p className="text-center doNot">Don't have any account? <span
+                            onClick={() => setShowSignup(true)}> Sign Up</span></p>
                     </div>
                     <div className="forgot">
-                        <p className="text-center">Forgot your password? <span onClick={()=> setShowReset(true)}>Reset It</span></p>
+                        <p className="text-center">Forgot your password? <span onClick={() => setShowReset(true)}>Reset It</span>
+                        </p>
                     </div>
                 </div>
                 }
