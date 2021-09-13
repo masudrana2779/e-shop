@@ -1,3 +1,8 @@
+body {
+  font-size: $f16;
+  line-height: 26px;
+  font-family: $pop;
+}
 
 .mainBodyContent {
   width: 100%;
@@ -7,13 +12,15 @@
   padding-right: 0px;
   transition: padding-right 0.35s ease-in-out 0s;
 }
+
 .banner {
   height: 250px;
   background: #f5f5f5 url("https://images.all-free-download.com/images/graphicthumb/beautiful_banner_background_05_hd_picture_169242.jpg") no-repeat scroll center center / cover;
 }
 
 
-.btnBorder {padding: 0px 15px;
+.btnBorder {
+  padding: 0px 15px;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
@@ -33,4 +40,40 @@
   background-color: rgb(255, 255, 255);
   border: 2px solid rgb(241, 241, 241);
   border-radius: 100px;
+}
+
+.loginWithBtn {
+  padding: 0px 30px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  border-radius: 6px;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-align: center;
+  text-decoration: none;
+  font-family: inherit;
+  border: 0px;
+  background-color: rgb(0, 158, 127);
+  height: 48px;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #fff !important;
+
+  .icon {
+    display: flex;
+    margin-right: 6px;
+  }
+
+  &.btnFb {
+    background-color: rgb(66, 103, 178);
+  }
+
+  &.btnGo {
+    background-color: rgb(66, 133, 244);
+  }
 }
