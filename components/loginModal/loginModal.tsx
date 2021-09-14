@@ -25,6 +25,11 @@ const LoginModal = () => {
         } else {
             console.log("Logout")
         }
+
+        if ((details.email !== adminUser.email) && (details.password !== adminUser.password)) {
+            console.log("Logged in");
+            setShow(false)
+        }
     }
 
     const Logout = () => {
