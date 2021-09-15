@@ -1,36 +1,44 @@
-import React from "react";
+import React, {useCallback, useState} from "react";
 import {LoadMoreButton, useLoadMore} from "../../hooks/useLoadMore";
+import ProductDetailsModal from "../productDetailsModal/productDetailsModal";
 
 const ProductWrap = () => {
 
     const {visible, loadMoreItems} = useLoadMore(8);
+    const [show, setShow] = useState(false);
+
+    const popup = useCallback(() => {
+        setShow(prevState => !prevState)
+    }, [show]);
 
     return (
-        <div className='productWrap'>
-            <div className="productInner">
-                <div className="productContent">
-                    {[1, 1, 1, 1, 1, 1,1,1, 1, 1, 1, 1, 1, 1, 1,1, 1, 1, 1, 1, 1,1, 1, 1 , 1].slice(0, visible).map((item, i) =>
-                        <div className="productSingleItem" key={i}>
-                            <div className="productSingleItemInner">
-                                <div className="productImgContent">
-                                    <div className="productImgInner">
-                                        <div className="productImg">
-                                            <img src="/img/product/RedCherries_zylnoo.jpg" alt="productImg"
-                                                 className='img-fluid'/>
-                                            <span className="offers">10%</span>
+        <>
+            {show &&  <ProductDetailsModal show={show} popup={popup} />}
+            <div className='productWrap'>
+                <div className="productInner">
+                    <div className="productContent">
+                        {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].slice(0, visible).map((item, i) =>
+                            <div className="productSingleItem" key={i} onClick={popup}>
+                                <div className="productSingleItemInner">
+                                    <div className="productImgContent">
+                                        <div className="productImgInner">
+                                            <div className="productImg">
+                                                <img src="/img/product/RedCherries_zylnoo.jpg" alt="productImg"
+                                                     className='img-fluid'/>
+                                                <span className="offers">10%</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="productInfoContent">
-                                    <div className="productInfoContentInner">
-                                        <h3 className="productTitle">Cherry</h3>
-                                        <span className="productWeight">12 pc(s)</span>
-                                        <div className="productMeta d-flex justify-content-between">
-                                            <div className="productPriceWrapper">
-                                                <span className="productPrice">$1.5 <del>$1.5</del> </span>
-                                            </div>
-                                            <button
-                                                className="btn btn-sm btn-success btnBorder cartBtn d-flex align-items-center">
+                                    <div className="productInfoContent">
+                                        <div className="productInfoContentInner">
+                                            <h3 className="productTitle">Cherry</h3>
+                                            <span className="productWeight">12 pc(s)</span>
+                                            <div className="productMeta d-flex justify-content-between">
+                                                <div className="productPriceWrapper">
+                                                    <span className="productPrice">$1.5 <del>$1.5</del> </span>
+                                                </div>
+                                                <button
+                                                    className="btn btn-sm btn-success btnBorder cartBtn d-flex align-items-center">
                                             <span className="cartIcon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14.4px" height="12px"
                                                      viewBox="0 0 14.4 12" fill="currentColor"
@@ -41,20 +49,22 @@ const ProductWrap = () => {
                                                     </g>
                                                 </svg>
                                             </span>
-                                                <span className="cartText">Cart</span>
-                                            </button>
+                                                    <span className="cartText">Cart</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    )}
-                </div>
-                <div className="text-center p-4">
-                    <LoadMoreButton loadMoreItems={loadMoreItems} isShow={[1, 1, 1, 1, 1, 11, 1, 1,1, 1, 1, 1, 1, 11, 1, 1 , 1].length > visible}/>
+                        )}
+                    </div>
+                    <div className="text-center p-4">
+                        <LoadMoreButton loadMoreItems={loadMoreItems}
+                                        isShow={[1, 1, 1, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1].length > visible}/>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 export default ProductWrap;
