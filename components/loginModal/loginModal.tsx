@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Modal} from "react-bootstrap";
+import {Dropdown, Modal} from "react-bootstrap";
 import Link from 'next/link';
 import {use} from "ast-types";
 
@@ -54,14 +54,51 @@ const LoginModal = () => {
         Login(details);
     }
 
+    /*
+    *
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user" width='38px' height='38px'
+                     onClick={() => Logout()}/>
+    *
+    * */
+
 
     return (
         <>
 
 
             {(user.email != "") ? (
-                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user" width='38px' height='38px'
-                     onClick={() => Logout()}/>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="user" width='38px'
+                             height='38px' />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <ul className="dropdownList">
+                            <li>
+                                <Link href={''} >
+                                    <a>Profile</a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={''} >
+                                    <a>Profile</a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={''} >
+                                    <a>Profile</a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={''} >
+                                    <a onClick={() => Logout()}>Logout</a>
+                                </Link>
+                            </li>
+                        </ul>
+                    </Dropdown.Menu>
+                </Dropdown>
+
             ) : (
                 <button className="btn btn-success" onClick={handleShow}>Join</button>
             )}

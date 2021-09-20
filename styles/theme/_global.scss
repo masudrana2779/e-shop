@@ -40,6 +40,37 @@ body {
   background-color: rgb(255, 255, 255);
   border: 2px solid rgb(241, 241, 241);
   border-radius: 100px;
+
+  &.cartBtn {
+    border: 2px solid rgb(247, 247, 247);
+    border-radius: 18px;
+    height: 36px;
+    padding-left: 17px;
+    padding-right: 17px;
+    font-size: 13px;
+    font-weight: 700;
+
+    .cartIcon {
+      svg {
+        box-sizing: border-box;
+        min-width: 0px;
+        margin: 0px 8px 0px 0px;
+        width: 14.4px;
+        height: 12px;
+        fill: currentcolor;
+      }
+    }
+
+    .cartText {
+
+    }
+
+    &:hover {
+      color: rgb(255, 255, 255);
+      background-color: rgb(0, 158, 127);
+      border-color: rgb(0, 158, 127);
+    }
+  }
 }
 
 .loginWithBtn {
@@ -75,5 +106,30 @@ body {
 
   &.btnGo {
     background-color: rgb(66, 133, 244);
+  }
+}
+
+.loadMoreBtn {
+  .loadMOre {
+    padding: 0px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    border-radius: 6px;
+    appearance: none;
+    text-align: center;
+    height: 38px;
+    text-decoration: none;
+    color: rgb(0, 158, 127);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(241, 241, 241);
+    box-shadow: none;
+    outline: none;
+    &:hover {
+      color: rgb(255, 255, 255);
+      background-color: rgb(0, 158, 127);
+      border-color: rgb(0, 158, 127);
+    }
   }
 }

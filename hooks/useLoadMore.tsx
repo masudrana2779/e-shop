@@ -28,7 +28,7 @@ export function LoadMoreButton({loadMoreItems, isShow}: LoadMoreButtonProps) {
                     <div className="col-12">
                         <br/>
                         <br/>
-                        <div className="loadMoreVideos text-center">
+                        <div className="loadMoreBtn text-center">
                             <button className="btn loadMOre" onClick={loadMoreItems}>Load More</button>
                         </div>
                     </div>
