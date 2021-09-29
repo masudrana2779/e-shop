@@ -18,6 +18,15 @@ const images = [
 
 const ProductDetailsModal = ({show, popup}: ProductDetailsModalProps) => {
 
+    const [count,setCount]=useState(0);
+
+    const plus = () => {
+        setCount(count + 1);
+    }
+    const minus = () => {
+        setCount(count - 1);
+    }
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -120,6 +129,8 @@ const ProductDetailsModal = ({show, popup}: ProductDetailsModalProps) => {
                                                             $1.5
                                                         </div>
                                                     </div>
+
+                                                    {/*
                                                     <div className="productCartBtnWrap">
                                                         <button
                                                             className="btn btn-sm btn-success btnBorder cartBtn d-flex align-items-center">
@@ -139,6 +150,40 @@ const ProductDetailsModal = ({show, popup}: ProductDetailsModalProps) => {
                                                             <span className="cartText">Cart</span>
                                                         </button>
                                                     </div>
+                                                    */}
+
+                                                    <div className="addProductBtn">
+                                                        <div className="counterBox">
+                                                            <button
+                                                                className="counterBtn" onClick={()=>minus()}>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="12px"
+                                                                     height="2px" viewBox="0 0 12 2">
+                                                                    <rect data-name="Rectangle 522" width="12"
+                                                                          height="2" rx="1" fill="currentColor"></rect>
+                                                                </svg>
+                                                            </button>
+                                                            <span
+                                                                className="counterNumber">{count}</span>
+                                                            <button onClick={()=>plus()}
+                                                                className="counterBtn">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="12px"
+                                                                     height="12px" viewBox="0 0 12 12">
+                                                                    <g id="Group_3351" data-name="Group 3351"
+                                                                       transform="translate(-1367 -190)">
+                                                                        <rect data-name="Rectangle 520" width="12"
+                                                                              height="2" rx="1"
+                                                                              transform="translate(1367 195)"
+                                                                              fill="currentColor"></rect>
+                                                                        <rect data-name="Rectangle 521" width="12"
+                                                                              height="2" rx="1"
+                                                                              transform="translate(1374 190) rotate(90)"
+                                                                              fill="currentColor"></rect>
+                                                                    </g>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
